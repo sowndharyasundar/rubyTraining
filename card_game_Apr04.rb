@@ -1,6 +1,6 @@
 card_suits=["Clubs","Diamonds","Hearts","Spades"]
-card_per_suit=%w[Ace 2 3 4 5 6 7 8 9 10 Jack Queen King]
-card_values=%w[11 2 3 4 5 6 7 8 9 10 10 10 10]
+CARD_PER_SUIT=%w[Ace 2 3 4 5 6 7 8 9 10 Jack Queen King]
+card_value=Hash["Ace"=>11,2=>2,3=>3,4=>4,5=>5,6=>6,7=>7,8=>8,9=>9,"Jack"=>10,"Queen"=>10,"King"=>10]
 deck=Array.new
 hand1=Array.new
 hand2=Array.new
@@ -8,7 +8,7 @@ hand2=Array.new
 index_card_per_suit=0
 deck_index=0
 for deck_index in 0..51
-		deck.insert(deck_index,card_per_suit.at(index_card_per_suit))
+		deck.insert(deck_index,CARD_PER_SUIT.at(index_card_per_suit))
 		deck_element=deck.at(deck_index)
 		deck_index+=1
 		index_card_per_suit+=1
@@ -16,4 +16,53 @@ for deck_index in 0..51
 		index_card_per_suit=0
 	end
 end
-puts deck
+
+j=0
+for i in 0..3
+	puts card_suits.at(i) +": "
+	while(i==0 and j<13)
+	print deck.at(j) +" "
+	j+=1
+	end
+	while(i==1 and j<26)
+	print deck.at(j) +" "
+	j+=1
+	end
+	while(i==2 and j<39)
+	print deck.at(j) +" "
+	j+=1
+	end
+	while(i==3 and j<52)
+	print deck.at(j) +" "
+	j+=1
+	end
+	puts "\n"
+end
+
+deck_index=0
+hand1_index=0
+hand2_index=0
+
+while(hand1_index<3)
+	hand1.insert(hand1_index,deck.at(deck_index))
+	hand1_index+=1
+	deck_index+=1
+end
+while(hand2_index<3)
+	hand2.insert(hand2_index,deck.at(deck_index))
+	hand2_index+=1
+	deck_index+=1
+end
+	hand1_index=0
+	hand2_index=0
+
+puts "\nHand one contains:\n" 
+for hand1_index in 0..hand1.size-1
+ 	puts hand1.at(hand1_index) +" of " +card_suits.at(index_card_per_suit)
+end
+
+puts "\nHand two contains:\n" 
+for hand2_index in 0..hand2.size-1
+ 	puts hand2.at(hand2_index) +" of " +card_suits.at(index_card_per_suit)
+end
+
