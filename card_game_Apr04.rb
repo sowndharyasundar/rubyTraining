@@ -17,27 +17,14 @@ for deck_index in 0..51
 	end
 end
 
-j=0
-for i in 0..3
-	puts card_suits.at(i) +": "
-	while(i==0 and j<13)
-	print deck.at(j) +" "
-	j+=1
+display_cards=deck.each_slice(13).to_a
+i=0
+	while(i<display_cards.size)
+		puts card_suits.at(i) +": "
+		print display_cards[i]
+		puts "\n" 
+		i+=1
 	end
-	while(i==1 and j<26)
-	print deck.at(j) +" "
-	j+=1
-	end
-	while(i==2 and j<39)
-	print deck.at(j) +" "
-	j+=1
-	end
-	while(i==3 and j<52)
-	print deck.at(j) +" "
-	j+=1
-	end
-	puts "\n"
-end
 
 deck_index=0
 hand1_index=0
@@ -65,4 +52,3 @@ puts "\nHand two contains:\n"
 for hand2_index in 0..hand2.size-1
  	puts hand2.at(hand2_index) +" of " +card_suits.at(index_card_per_suit)
 end
-
